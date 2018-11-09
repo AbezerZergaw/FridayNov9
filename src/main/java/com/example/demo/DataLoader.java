@@ -46,7 +46,7 @@ public class DataLoader implements CommandLineRunner{
         userRepo.save(user);
 
 
-        Message message =new Message("Hello world!", "User", "11/09/2018" );
+        Message message =new Message("Hello world!", "User", "11-09-2018" );
 
         messageRepo.save(message);
 

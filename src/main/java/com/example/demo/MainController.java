@@ -68,22 +68,21 @@ public class MainController {
     @GetMapping("/addtext")
     public String addMessage(Model model) {
         model.addAttribute("message", new Message());
-        return "messagefield";
+        return "addmessagefrom";
     }
 
     @PostMapping("/processtext")
+    public String processText(@Valid @ModelAttribute("message") Message message, BindingResult result, Model model) {
 
-    public String processText(@Valid @ModelAttribute("text") Message message, BindingResult result, Model model) {
-
-        model.addAttribute("message", message);
+        //model.addAttribute("message", message);
         if (result.hasErrors()) {
 
-            return "messagefield";
-        } else {
+            return "addmessagefrom";
+        }
 
            messageRepo.save(message);
-            model.addAttribute("message", "Message Added");
-        }
+
+
         return "redirect:/";
     }
 

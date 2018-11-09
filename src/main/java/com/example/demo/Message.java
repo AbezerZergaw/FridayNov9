@@ -14,12 +14,12 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NotNull
+
     private String message;
-    @NotNull
+
     private String sentby;
 
-    @NotNull
+
     private String date;
 
     public Message(String message, String sentby, String date) {

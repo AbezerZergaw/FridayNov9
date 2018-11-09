@@ -56,6 +56,7 @@
                 </thead>
                 <tbody>
                 <tr  th:each="text : ${messages}">
+
                     <td th:text="${text.message}"></td>
                     <td th:text="${text.sentby}"></td>
                     <td th:text="${text.date}"></td>
@@ -69,7 +70,7 @@
             <!--</div>-->
             <div>
                 <!--<button class="btn btn-primary"><a class="text-white" href="/listMsg">Add Message</a></button>-->
-                <button id="btn-color" class="btn btn-color"><a class="text-white" href="/login">
+                <button id="btn-color" class="btn btn-color" sec:authorize="!isFullyAuthenticated()"><a class="text-white" href="/login">
                     Login</a></button>
                 <button class="btn btn-color"><a class="text-white" href="/registerPage">Register</a></button>
             </div>
