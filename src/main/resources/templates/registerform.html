@@ -13,7 +13,8 @@
         <title>Title</title>
     </head>
 <body>
-
+<div th:replace="base :: nav"></div>
+<!--
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -29,18 +30,23 @@
             <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
         </ul>
     </div>
-</nav>
+</nav>-->
 <div class="jumbotron">
     <div class="container">
         <h2>New User Registration</h2>
 
-        <form>
+        <form autocomplete="off" th:action="@{/register}" th:object="${user}" method="post">
 
 
             <div class="form-group row">
                 <div class="col-xs-4">
                     <label>First Name</label>
-                    <input class="form-control" type="text" placeholder="First Name">
+
+                    <span th:if="${#fields.hasErrors('firstname')}"
+                                         th:errors="*{firstname}">First Name Error</span>
+                    <input class="form-control" type="text" id="firstname" placeholder="First Name" th:field="*{firstname}" />
+
+                 <!--   <input class="form-control" type="text" placeholder="First Name">-->
                 </div>
             </div>
 
@@ -48,27 +54,40 @@
             <div class="form-group row">
                 <div class="col-xs-4">
                     <label>Last Name</label>
-                    <input class="form-control" type="text" placeholder="Last Name">
+
+                    <span th:if="${#fields.hasErrors('lastname')}"
+                    th:errors="*{lastname}">Last Name Error</span>
+
+                    <input class="form-control" type="text" placeholder="Last Name" th:field="*{lastname}">
                 </div>
             </div>
 
             <div class="form-group row">
                 <div class="col-xs-4">
                     <label>Email</label>
-                    <input class="form-control" type="text" placeholder="Email">
+
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</span>
+
+                    <input class="form-control" type="text" placeholder="Email"  th:field="*{email}">
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-xs-4">
                     <label>Username</label>
-                    <input class="form-control" type="text" placeholder="Username">
+
+
+                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</span>
+
+                    <input class="form-control" type="text" placeholder="Username" th:field="*{username}">
                 </div>
             </div>
             <div>
                 <div class="form-group row">
                     <div class="col-xs-4">
                         <label>Password</label>
-                        <input class="form-control" type="text" placeholder="Password">
+
+                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Email Error</span>
+                        <input class="form-control" type="text" placeholder="Password" th:field="*{password}">
                     </div>
                 </div>
                 <div class="form-group row">

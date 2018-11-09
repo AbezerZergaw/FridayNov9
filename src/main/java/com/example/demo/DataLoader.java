@@ -21,6 +21,8 @@ public class DataLoader implements CommandLineRunner{
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    MessageRepo messageRepo;
 
     @Override
     public void run(String...strings) throws Exception{
@@ -43,6 +45,10 @@ public class DataLoader implements CommandLineRunner{
         user.setRoles(Arrays.asList(adminRole));
         userRepo.save(user);
 
+
+        Message message =new Message("Hello world!", "User", "11/09/2018" );
+
+        messageRepo.save(message);
 
     }
 

@@ -18,13 +18,18 @@ public class Message {
     private String message;
     @NotNull
     private String sentby;
-    @NotNull
-    private String text;
+
     @NotNull
     private String date;
 
+    public Message(String message, String sentby, String date) {
+        this.message = message;
+        this.sentby = sentby;
+        this.date = date;
+    }
 
     public Message() {
+
     }
 
     public long getId() {
@@ -51,13 +56,6 @@ public class Message {
         this.sentby = sentby;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
 
     public String getDate() {
         return date;

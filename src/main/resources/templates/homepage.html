@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
 
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div th:replace="base :: nav"></div>
+
+<!--
 
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -28,6 +31,7 @@
         </ul>
     </div>
 </nav>
+-->
 
 <div class="my-5"></div>
 
@@ -35,46 +39,45 @@
     App!</h1>
 
 <div class="jumbotron">
-<div class="container bg-light ">
+    <div class="container bg-light ">
 
-    <div class="my-4 "></div>
-    <h2 class="text-center py-3 pl-4 pr-5">List of Messages</h2>
+        <div class="my-4 "></div>
+        <h2 class="text-center py-3 pl-4 pr-5">List of Messages</h2>
 
 
-    <div class="container">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Content</th>
-                <th>Sent By</th>
-                <th>Date</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-            </tr>
-            </tbody>
-        </table>
-        <br>
-        <!--<h5>You have to login to add message!</h5>-->
-        <!--<div sec:authorize="isAnonymous()">-->
-        <!--<button class="btn btn-primary"><a class="text-white" href="/login">Login</a></button>-->
-        <!--</div>-->
-        <div>
-            <!--<button class="btn btn-primary"><a class="text-white" href="/listMsg">Add Message</a></button>-->
-            <button id="btn-color" class="btn btn-color"><a class="text-white" href="/login">
-                Login</a></button>
-            <button class="btn btn-color"><a class="text-white" href="/register">Register</a></button>
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Content</th>
+                    <th>Sent By</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr  th:each="text : ${messages}">
+                    <td th:text="${text.message}"></td>
+                    <td th:text="${text.sentby}"></td>
+                    <td th:text="${text.date}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            <!--<h5>You have to login to add message!</h5>-->
+            <!--<div sec:authorize="isAnonymous()">-->
+            <!--<button class="btn btn-primary"><a class="text-white" href="/login">Login</a></button>-->
+            <!--</div>-->
+            <div>
+                <!--<button class="btn btn-primary"><a class="text-white" href="/listMsg">Add Message</a></button>-->
+                <button id="btn-color" class="btn btn-color"><a class="text-white" href="/login">
+                    Login</a></button>
+                <button class="btn btn-color"><a class="text-white" href="/registerPage">Register</a></button>
+            </div>
+
+
+            <div class="pb-5"></div>
         </div>
-
-
-
-        <div class="pb-5"></div>
     </div>
-</div>
 </div>
 
 <div th:fragment="footer">
