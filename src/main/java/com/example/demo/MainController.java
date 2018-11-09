@@ -63,4 +63,29 @@ public class MainController {
         model.addAttribute("user", new User());
         return "registerform";
     }
+
+
+    @GetMapping("/addtext")
+    public String addMessage(Model model) {
+        model.addAttribute("message", new Message());
+        return "messagefield";
+    }
+
+    @PostMapping("/processtext")
+
+    public String processText(@Valid @ModelAttribute("text") Message message, BindingResult result, Model model) {
+
+        model.addAttribute("message", message);
+        if (result.hasErrors()) {
+
+            return "messagefield";
+        } else {
+
+           messageRepo.save(message);
+            model.addAttribute("message", "Message Added");
+        }
+        return "redirect:/";
+    }
+
+
 }

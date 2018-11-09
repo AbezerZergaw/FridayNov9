@@ -38,6 +38,10 @@
             <li sec:authorize="!isFullyAuthenticated()">
                 <a href="/login"><span class="glyphicon glyphicon-log-in"></span>Login</a>
             </li>
+
+            <li class="nav-item" sec:authorize="isFullyAuthenticated()">
+                <a href="/addtext">Add Message</a>
+            </li>
             <li class="nav-item" sec:authorize="isFullyAuthenticated()">
                 <a href="/logout">Logout</a>
             </li>
