@@ -13,5 +13,16 @@ public class MainController {
         return "homepage";
     }
 
+    @RequestMapping("/register")
+    public String addUser(){
+
+        return "registerform";
+    }
+
+    @RequestMapping("/login")
+    public String loginPage(){
+
+        return "loginform";
+    }
 
 }

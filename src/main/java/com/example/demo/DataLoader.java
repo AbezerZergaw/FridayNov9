@@ -1,8 +1,7 @@
 package com.example.demo;
 
 
-import com.example.demo.Classes.Course;
-import com.example.demo.Repository.CourseRepo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,9 +21,6 @@ public class DataLoader implements CommandLineRunner{
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
-    @Autowired
-    private CourseRepo courseRepo;
 
     @Override
     public void run(String...strings) throws Exception{
@@ -46,12 +42,6 @@ public class DataLoader implements CommandLineRunner{
 
         user.setRoles(Arrays.asList(adminRole));
         userRepo.save(user);
-
-
-
-        Course course = new Course("Java", "Dave", "Bootcamp", 200);
-
-        courseRepo.save(course);
 
 
     }
